@@ -5,7 +5,6 @@ export const GlocalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #333333;
         color: white;
     }
 
@@ -16,6 +15,7 @@ export const GlocalStyle = createGlobalStyle`
     body {
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        background-color: #333333;
     }
     
     h1, h2, h3, h4, h5, h6, strong {

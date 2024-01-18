@@ -1,9 +1,15 @@
-
+import { Link } from "react-router-dom"
+import { ContainerMenu } from "./style"
 
 export const MenuComponent = () => {
     return(
         <>
-            <h1>Menu</h1>
+            <ContainerMenu>
+                <Link to='/'>Menu</Link>
+                <Link to='/detetives'>Detetives</Link>
+                <Link to='/npcs'>Npcs</Link>
+                <Link to='/monstros'>Monstros</Link>
+            </ContainerMenu>
         </>
     )
 }
