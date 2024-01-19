@@ -1,7 +1,7 @@
-export const Npcs = () =>{
+export const NpcsPage = () =>{
     return(
         <>
-            <h1>NPCS</h1>
+            <h1>Página dos NPCS</h1>
         </>
     )
 }

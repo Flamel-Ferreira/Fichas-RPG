@@ -1,7 +1,7 @@
-export const Monstros = () => {
+export const MonstrosPage = () => {
     return(
         <>
-            <h1>Monstros</h1>
+            <h1>Página dos Monstros</h1>
         </>
 
     )

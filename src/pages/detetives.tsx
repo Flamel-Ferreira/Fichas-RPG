@@ -1,7 +1,7 @@
-export const Detevites = () => {
+export const DetevitesPage = () => {
     return(
         <>
-            <h1>Detetives</h1>
+            <h1>Página dos Detetives</h1>
         </>
     )
 } 
