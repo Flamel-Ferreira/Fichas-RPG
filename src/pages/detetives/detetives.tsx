@@ -4,9 +4,6 @@ export const DetevitesPage = () => {
     return(
         <DetetivesContainer>
             <FichaDetetive/>
-            <FichaDetetive/>
-            <FichaDetetive/>
-            <FichaDetetive/>
         </DetetivesContainer>
     )
 } 

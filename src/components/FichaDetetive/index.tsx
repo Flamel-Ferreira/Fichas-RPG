@@ -60,6 +60,8 @@ export const FichaDetetive = () => {
             <AreaSuspensa>
                 <MenuSuspenso>Ocultar</MenuSuspenso>
             </AreaSuspensa>
+
+            
         </Ficha>
     )
 }
