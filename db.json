@@ -1,0 +1,47 @@
+{
+    "detetives":[
+        {
+            "nome":"Elizabeth Ellen",
+            "imgSrc":"./src/assets/Protagonistas/Elizabeth Ellen.png",
+            "saude":{
+                    "vida":{
+                        "vidaAtual":27,
+                        "vidaMaxima":31
+                    },
+                    "energia":{
+                        "energiaAtual":23,
+                        "energiaMaxima":23
+                    }                     
+            },
+            "efeitos":{
+                "envenenado": false,
+                "amaldicoado": false,
+                "atordoado": false,
+                "marcado": false,
+                "adrenalina": false,
+                "machucado": false
+            },
+            "atributos":{
+                "forca": 11,
+                "destreza": 11,
+                "inteligencia": 11,
+                "constituicao": 11,
+                "carisma": 11
+            },
+            "mochila":[
+                {
+                    "nome": "Lupa",
+                    "descricao": "Usado para ver algumas coisas com mais detalhes."
+                },
+                {
+                    "nome": "Caderno de Anotações",
+                    "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
+                }
+            ]
+            
+        }
+    ],
+    "npcs":[],
+    "monstros":[]
+
+}
