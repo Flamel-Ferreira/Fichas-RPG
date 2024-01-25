@@ -1,7 +1,4 @@
 import {Ficha,AreaTitulo,Titulo,AreaImagemPersonagem,ImagemPersonagem,AreaStatus,AreaEfeitos,AreaStatusPoint,Barra,ContadorVida,BotaoDano,ContadorEnergia,BotaoEnergia,RangeVida, RangeEnergia,TituloHP,TituloMP,AreaSuspensa, MenuSuspenso} from "./style.ts"
-
-import ElizabethEllen from "../../assets/Protagonistas/Elizabeth Ellen.png"
-
 import Adrenalina from "../../assets/Icones/Efeitos/Adrenalina_Ativo.svg"
 import Atordoado from "../../assets/Icones/Efeitos/Atordoado_Ativo.svg"
 import Envenenado from "../../assets/Icones/Efeitos/Veneno_Ativo.svg"
@@ -11,16 +8,23 @@ import Machucado from "../../assets/Icones/Efeitos/Machucado_Ativo.svg"
 
 import Dano from "../../assets/Icones/Botao_Dano.svg"
 import DanoEnergia from "../../assets/Icones/Botao_Dano_Energia.svg"
+import { iFichaDetetive } from "../../pages/detetives/types.ts"
 
-export const FichaDetetive = () => {
+interface iFicha{
+    propriedadeFicha: iFichaDetetive
+}
+
+export const FichaDetetive: React.FC<iFicha>= ({
+    propriedadeFicha
+}) => {
     return (
         <Ficha>
             <AreaTitulo>
-                <Titulo>Elizabeth Ellen</Titulo>
+                <Titulo>{propriedadeFicha.nome}</Titulo>
             </AreaTitulo>
 
             <AreaImagemPersonagem>
-                <ImagemPersonagem src={ElizabethEllen} alt="Imagem do Personagem" />
+                <ImagemPersonagem src={propriedadeFicha.imgSrc} alt="Imagem do Personagem" />
             </AreaImagemPersonagem>
             
             
@@ -37,8 +41,8 @@ export const FichaDetetive = () => {
                 <AreaStatusPoint>
                     <TituloHP>HP</TituloHP>
                     <Barra>
-                        <ContadorVida>27/31</ContadorVida>
-                        <RangeVida type="range" min='0' max={31}/>
+                        <ContadorVida>{propriedadeFicha.saude.vida.vidaAtual}/{propriedadeFicha.saude.vida.vidaMaxima}</ContadorVida>
+                        <RangeVida type="range" value={propriedadeFicha.saude.vida.vidaAtual} min='0' max={31}/>
                     </Barra>
                     <BotaoDano>
                         <img src={Dano} alt="Dano" />
@@ -48,8 +52,8 @@ export const FichaDetetive = () => {
                 <AreaStatusPoint>
                     <TituloMP>MP</TituloMP>
                     <Barra>
-                        <ContadorEnergia>13/23</ContadorEnergia>
-                        <RangeEnergia type="range" min='0' max={23}/>
+                        <ContadorEnergia>{propriedadeFicha.saude.energia.energiaAtual}/{propriedadeFicha.saude.energia.energiaMaxima}</ContadorEnergia>
+                        <RangeEnergia value={propriedadeFicha.saude.energia.energiaAtual} type="range" min='0' max={23}/>
                     </Barra>
                     <BotaoEnergia>
                         <img src={DanoEnergia} alt="Energia" />
