@@ -1,207 +1,208 @@
 {
-    "detetives":[
-        {
-            "nome":"Elizabeth Ellen",
-            "imgSrc":"./src/assets/Protagonistas/Elizabeth Ellen.png",
-            "saude":{
-                    "vida":{
-                        "vidaAtual":27,
-                        "vidaMaxima":31
-                    },
-                    "energia":{
-                        "energiaAtual":23,
-                        "energiaMaxima":23
-                    }                     
-            },
-            "efeitos":{
-                "envenenado": false,
-                "amaldicoado": false,
-                "atordoado": false,
-                "marcado": false,
-                "adrenalina": false,
-                "machucado": false
-            },
-            "atributos":{
-                "forca": 11,
-                "destreza": 11,
-                "inteligencia": 11,
-                "constituicao": 11,
-                "carisma": 11
-            },
-            "mochila":[
-                {
-                    "nome": "Lupa",
-                    "descricao": "Usado para ver algumas coisas com mais detalhes."
-                },
-                {
-                    "nome": "Caderno de Anotações",
-                    "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
-                }
-            ]
-            
+  "detetives": [
+    {
+      "id": "1",
+      "nome": "Elizabeth Ellen",
+      "imgSrc": "./src/assets/Protagonistas/Elizabeth Ellen.png",
+      "saude": {
+        "vida": {
+          "vidaAtual": 18,
+          "vidaMaxima": 32
         },
-        {
-            "nome":"Jéssica Jones",
-            "imgSrc":"./src/assets/Protagonistas/Jéssica Jones.png",
-            "saude":{
-                    "vida":{
-                        "vidaAtual":27,
-                        "vidaMaxima":31
-                    },
-                    "energia":{
-                        "energiaAtual":23,
-                        "energiaMaxima":23
-                    }                     
-            },
-            "efeitos":{
-                "envenenado": false,
-                "amaldicoado": false,
-                "atordoado": false,
-                "marcado": false,
-                "adrenalina": false,
-                "machucado": false
-            },
-            "atributos":{
-                "forca": 11,
-                "destreza": 11,
-                "inteligencia": 11,
-                "constituicao": 11,
-                "carisma": 11
-            },
-            "mochila":[
-                {
-                    "nome": "Lupa",
-                    "descricao": "Usado para ver algumas coisas com mais detalhes."
-                },
-                {
-                    "nome": "Caderno de Anotações",
-                    "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
-                }
-            ]
-            
-        },
-        {
-            "nome":"Saymon Stallman",
-            "imgSrc":"./src/assets/Protagonistas/Saymon Stallman.png",
-            "saude":{
-                    "vida":{
-                        "vidaAtual":25,
-                        "vidaMaxima":32
-                    },
-                    "energia":{
-                        "energiaAtual":16,
-                        "energiaMaxima":25
-                    }                     
-            },
-            "efeitos":{
-                "envenenado": false,
-                "amaldicoado": false,
-                "atordoado": false,
-                "marcado": false,
-                "adrenalina": false,
-                "machucado": false
-            },
-            "atributos":{
-                "forca": 11,
-                "destreza": 11,
-                "inteligencia": 11,
-                "constituicao": 11,
-                "carisma": 11
-            },
-            "mochila":[
-                {
-                    "nome": "Lupa",
-                    "descricao": "Usado para ver algumas coisas com mais detalhes."
-                },
-                {
-                    "nome": "Caderno de Anotações",
-                    "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
-                }
-            ]
-            
-        },
-        {
-            "nome":"Mia Miller",
-            "imgSrc":"./src/assets/Protagonistas/Mia Miller.png",
-            "saude":{
-                    "vida":{
-                        "vidaAtual":11,
-                        "vidaMaxima":32
-                    },
-                    "energia":{
-                        "energiaAtual":13,
-                        "energiaMaxima":27
-                    }                     
-            },
-            "efeitos":{
-                "envenenado": false,
-                "amaldicoado": false,
-                "atordoado": false,
-                "marcado": false,
-                "adrenalina": false,
-                "machucado": false
-            },
-            "atributos":{
-                "forca": 11,
-                "destreza": 11,
-                "inteligencia": 11,
-                "constituicao": 11,
-                "carisma": 11
-            },
-            "mochila":[
-                {
-                    "nome": "Lupa",
-                    "descricao": "Usado para ver algumas coisas com mais detalhes."
-                },
-                {
-                    "nome": "Caderno de Anotações",
-                    "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
-                }
-            ]
-            
-        },
-        {
-            "nome":"Rodrigo Régis",
-            "imgSrc":"./src/assets/Protagonistas/Rodrigo Régis.png",
-            "saude":{
-                    "vida":{
-                        "vidaAtual":8,
-                        "vidaMaxima":32
-                    },
-                    "energia":{
-                        "energiaAtual":2,
-                        "energiaMaxima":25
-                    }                     
-            },
-            "efeitos":{
-                "envenenado": false,
-                "amaldicoado": false,
-                "atordoado": false,
-                "marcado": false,
-                "adrenalina": false,
-                "machucado": false
-            },
-            "atributos":{
-                "forca": 11,
-                "destreza": 11,
-                "inteligencia": 11,
-                "constituicao": 11,
-                "carisma": 11
-            },
-            "mochila":[
-                {
-                    "nome": "Lupa",
-                    "descricao": "Usado para ver algumas coisas com mais detalhes."
-                },
-                {
-                    "nome": "Caderno de Anotações",
-                    "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
-                }
-            ]
-            
+        "energia": {
+          "energiaAtual": 19,
+          "energiaMaxima": 25
         }
-    ],
-    "npcs":[],
-    "monstros":[]
-
+      },
+      "efeitos": {
+        "envenenado": false,
+        "amaldicoado": false,
+        "atordoado": false,
+        "marcado": false,
+        "adrenalina": false,
+        "machucado": false
+      },
+      "atributos": {
+        "forca": 11,
+        "destreza": 11,
+        "inteligencia": 11,
+        "constituicao": 11,
+        "carisma": 11
+      },
+      "mochila": [
+        {
+          "nome": "Lupa",
+          "descricao": "Usado para ver algumas coisas com mais detalhes."
+        },
+        {
+          "nome": "Caderno de Anotações",
+          "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nome": "Jéssica Jones",
+      "imgSrc": "./src/assets/Protagonistas/Jéssica Jones.png",
+      "saude": {
+        "vida": {
+          "vidaAtual": 26,
+          "vidaMaxima": 32
+        },
+        "energia": {
+          "energiaAtual": 22,
+          "energiaMaxima": 25
+        }
+      },
+      "efeitos": {
+        "envenenado": false,
+        "amaldicoado": false,
+        "atordoado": false,
+        "marcado": false,
+        "adrenalina": false,
+        "machucado": false
+      },
+      "atributos": {
+        "forca": 11,
+        "destreza": 11,
+        "inteligencia": 11,
+        "constituicao": 11,
+        "carisma": 11
+      },
+      "mochila": [
+        {
+          "nome": "Lupa",
+          "descricao": "Usado para ver algumas coisas com mais detalhes."
+        },
+        {
+          "nome": "Caderno de Anotações",
+          "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "Saymon Stallman",
+      "imgSrc": "./src/assets/Protagonistas/Saymon Stallman.png",
+      "saude": {
+        "vida": {
+          "vidaAtual": 24,
+          "vidaMaxima": 32
+        },
+        "energia": {
+          "energiaAtual": 15,
+          "energiaMaxima": 25
+        }
+      },
+      "efeitos": {
+        "envenenado": false,
+        "amaldicoado": false,
+        "atordoado": false,
+        "marcado": false,
+        "adrenalina": false,
+        "machucado": false
+      },
+      "atributos": {
+        "forca": 11,
+        "destreza": 11,
+        "inteligencia": 11,
+        "constituicao": 11,
+        "carisma": 11
+      },
+      "mochila": [
+        {
+          "nome": "Lupa",
+          "descricao": "Usado para ver algumas coisas com mais detalhes."
+        },
+        {
+          "nome": "Caderno de Anotações",
+          "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nome": "Mia Miller",
+      "imgSrc": "./src/assets/Protagonistas/Mia Miller.png",
+      "saude": {
+        "vida": {
+          "vidaAtual": 10,
+          "vidaMaxima": 32
+        },
+        "energia": {
+          "energiaAtual": 12,
+          "energiaMaxima": 25
+        }
+      },
+      "efeitos": {
+        "envenenado": false,
+        "amaldicoado": false,
+        "atordoado": false,
+        "marcado": false,
+        "adrenalina": false,
+        "machucado": false
+      },
+      "atributos": {
+        "forca": 11,
+        "destreza": 11,
+        "inteligencia": 11,
+        "constituicao": 11,
+        "carisma": 11
+      },
+      "mochila": [
+        {
+          "nome": "Lupa",
+          "descricao": "Usado para ver algumas coisas com mais detalhes."
+        },
+        {
+          "nome": "Caderno de Anotações",
+          "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "nome": "Rodrigo Régis",
+      "imgSrc": "./src/assets/Protagonistas/Rodrigo Régis.png",
+      "saude": {
+        "vida": {
+          "vidaAtual": 19,
+          "vidaMaxima": 32
+        },
+        "energia": {
+          "energiaAtual": 1,
+          "energiaMaxima": 25
+        }
+      },
+      "efeitos": {
+        "envenenado": false,
+        "amaldicoado": false,
+        "atordoado": false,
+        "marcado": false,
+        "adrenalina": false,
+        "machucado": false
+      },
+      "atributos": {
+        "forca": 11,
+        "destreza": 11,
+        "inteligencia": 11,
+        "constituicao": 11,
+        "carisma": 11
+      },
+      "mochila": [
+        {
+          "nome": "Lupa",
+          "descricao": "Usado para ver algumas coisas com mais detalhes."
+        },
+        {
+          "nome": "Caderno de Anotações",
+          "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
+        }
+      ],
+      "vidaAtual": 20,
+      "saude.vida.vidaAtual": 11
+    }
+  ],
+  "npcs": [],
+  "monstros": []
 }
