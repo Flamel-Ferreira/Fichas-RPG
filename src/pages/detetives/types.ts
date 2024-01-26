@@ -1,6 +1,7 @@
 
 
 export interface iFichaDetetive{
+    id: number,
     nome: string,
     imgSrc: string,
     saude: {

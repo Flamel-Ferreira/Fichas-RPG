@@ -9,7 +9,7 @@ import Machucado from "../../assets/Icones/Efeitos/Machucado_Ativo.svg"
 import Dano from "../../assets/Icones/Botao_Dano.svg"
 import DanoEnergia from "../../assets/Icones/Botao_Dano_Energia.svg"
 import { iFichaDetetive } from "../../pages/detetives/types.ts"
-
+import axios from "axios"
 interface iFicha{
     propriedadeFicha: iFichaDetetive
 }
@@ -17,6 +17,29 @@ interface iFicha{
 export const FichaDetetive: React.FC<iFicha>= ({
     propriedadeFicha
 }) => {
+
+    const AtualizarSaude = async (id:number,qtdDanoVida:number,qtdDanoEnergia:number) => {
+        console.log(id)
+        try{
+            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+                "saude": {
+                    "vida": {
+                        "vidaAtual": propriedadeFicha.saude.vida.vidaAtual - qtdDanoVida,
+                        "vidaMaxima": 32
+                    },
+                    "energia": {
+                        "energiaAtual": propriedadeFicha.saude.energia.energiaAtual - qtdDanoEnergia,
+                        "energiaMaxima": 25
+                    }
+                }
+            })
+            console.log(response.data)
+        }catch{
+            console.error("Erro ao atualizar vida:",Error)
+        }
+        
+    }
+
     return (
         <Ficha>
             <AreaTitulo>
@@ -44,7 +67,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
                         <ContadorVida>{propriedadeFicha.saude.vida.vidaAtual}/{propriedadeFicha.saude.vida.vidaMaxima}</ContadorVida>
                         <RangeVida type="range" value={propriedadeFicha.saude.vida.vidaAtual} min='0' max={31}/>
                     </Barra>
-                    <BotaoDano>
+                    <BotaoDano onClick={ () => { AtualizarSaude(propriedadeFicha.id,1,0)}}>
                         <img src={Dano} alt="Dano" />
                     </BotaoDano>
                 </AreaStatusPoint>
@@ -55,7 +78,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
                         <ContadorEnergia>{propriedadeFicha.saude.energia.energiaAtual}/{propriedadeFicha.saude.energia.energiaMaxima}</ContadorEnergia>
                         <RangeEnergia value={propriedadeFicha.saude.energia.energiaAtual} type="range" min='0' max={23}/>
                     </Barra>
-                    <BotaoEnergia>
+                    <BotaoEnergia onClick={ () => { AtualizarSaude(propriedadeFicha.id,0,1)} }>
                         <img src={DanoEnergia} alt="Energia" />
                     </BotaoEnergia>
                 </AreaStatusPoint>
