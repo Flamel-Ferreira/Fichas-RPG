@@ -20,6 +20,12 @@ export const DetevitesPage = () => {
 
     useEffect(() => {
         handleListChar()
+        
+        const intervalId = setInterval(handleListChar, 1000); 
+
+        return () => {
+            clearInterval(intervalId); 
+        };
     }, [])
 
     return(
