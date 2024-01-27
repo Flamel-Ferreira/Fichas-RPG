@@ -1,16 +1,19 @@
-import {Ficha,AreaTitulo,Titulo,AreaImagemPersonagem,ImagemPersonagem,AreaStatus,AreaEfeitos, BotaoEfeitos,AreaStatusPoint,Barra,ContadorVida,BotaoDano,ContadorEnergia,BotaoEnergia,RangeVida, RangeEnergia,TituloHP,TituloMP,AreaSuspensa, MenuSuspenso} from "./style.ts"
+import {Ficha,AreaTitulo,Titulo,AreaImagemPersonagem,ImagemPersonagem,AreaStatus,AreaEfeitos, BotaoEfeitos,AreaStatusPoint,Barra,ContadorVida,BotaoDano,ContadorEnergia,BotaoEnergia,RangeVida, RangeEnergia,TituloHP,TituloMP,AreaSuspensa,AreaAtributos,Atributos,AtributoUnico,AtributoTexto,AreaLevel,PontucaoAtributo,LevelBox,LevelUp,LevelDown,BotaoDado,PontuacaoAdicional,MenuSuspenso} from "./style.ts"
 import Adrenalina from "../../assets/Icones/Efeitos/Adrenalina_Ativo.svg"
 import Atordoado from "../../assets/Icones/Efeitos/Atordoado_Ativo.svg"
 import Envenenado from "../../assets/Icones/Efeitos/Veneno_Ativo.svg"
 import Maldicao from "../../assets/Icones/Efeitos/Maldição_Ativo.svg"
 import Marcado from "../../assets/Icones/Efeitos/Marcado_Ativo.svg"
 import Machucado from "../../assets/Icones/Efeitos/Machucado_Ativo.svg"
+import DadoD20 from "../../assets/Icones/Dado_d20.svg"
+import LevelUpIcon  from "../../assets/Icones/Level_UP.svg"
+import LevelDownIcon from "../../assets/Icones/Level_DOWN.svg"
 
 import Dano from "../../assets/Icones/Botao_Dano.svg"
 import DanoEnergia from "../../assets/Icones/Botao_Dano_Energia.svg"
 import { iFichaDetetive } from "../../pages/detetives/types.ts"
 import axios from "axios"
-
+import { useState } from "react"
 interface iFicha{
     propriedadeFicha: iFichaDetetive
 }
@@ -18,6 +21,8 @@ interface iFicha{
 export const FichaDetetive: React.FC<iFicha>= ({
     propriedadeFicha
 }) => {
+
+    const [mostrar,setMostrar] = useState(false)
 
     const AtualizarSaude = async (id:number,qtdDanoVida:number,qtdDanoEnergia:number) => {
         try{
@@ -134,11 +139,116 @@ export const FichaDetetive: React.FC<iFicha>= ({
                     </BotaoEnergia>
                 </AreaStatusPoint>
             </AreaStatus>
+            
+            {mostrar || 
+                <AreaAtributos>
+                    <Atributos>
+                        <h3>Atributos:</h3>
+                        <AtributoUnico>
+                            <AtributoTexto>
+                                <h4>Força</h4>
+                            </AtributoTexto>
+                            <AreaLevel>
+                                <PontucaoAtributo>
+                                    <h4>{propriedadeFicha.atributos.forca}</h4>
+                                </PontucaoAtributo>
+                                <LevelBox>
+                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
+                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                </LevelBox>
+                            </AreaLevel>
+                            <h3>+</h3>
+                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <PontuacaoAdicional>
+                                <h4>00</h4>
+                            </PontuacaoAdicional>
+                        </AtributoUnico>
 
+                        <AtributoUnico>
+                            <AtributoTexto>
+                                <h4>Destreza</h4>
+                            </AtributoTexto>
+                            <AreaLevel>
+                                <PontucaoAtributo>
+                                    <h4>{propriedadeFicha.atributos.destreza}</h4>
+                                </PontucaoAtributo>
+                                <LevelBox>
+                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
+                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                </LevelBox>
+                            </AreaLevel>
+                            <h3>+</h3>
+                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <PontuacaoAdicional>
+                                <h4>00</h4>
+                            </PontuacaoAdicional>
+                        </AtributoUnico>
 
+                        <AtributoUnico>
+                            <AtributoTexto>
+                                <h4>Inteligência</h4>
+                            </AtributoTexto>
+                            <AreaLevel>
+                                <PontucaoAtributo>
+                                    <h4>{propriedadeFicha.atributos.inteligencia}</h4>
+                                </PontucaoAtributo>
+                                <LevelBox>
+                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
+                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                </LevelBox>
+                            </AreaLevel>
+                            <h3>+</h3>
+                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <PontuacaoAdicional>
+                                <h4>00</h4>
+                            </PontuacaoAdicional>
+                        </AtributoUnico>
+
+                        <AtributoUnico>
+                            <AtributoTexto>
+                                <h4>Constituição</h4>
+                            </AtributoTexto>
+                            <AreaLevel>
+                                <PontucaoAtributo>
+                                    <h4>{propriedadeFicha.atributos.constituicao}</h4>
+                                </PontucaoAtributo>
+                                <LevelBox>
+                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
+                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                </LevelBox>
+                            </AreaLevel>
+                            <h3>+</h3>
+                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <PontuacaoAdicional>
+                                <h4>00</h4>
+                            </PontuacaoAdicional>
+                        </AtributoUnico>
+
+                        <AtributoUnico>
+                            <AtributoTexto>
+                                <h4>Carisma</h4>
+                            </AtributoTexto>
+                            <AreaLevel>
+                                <PontucaoAtributo>
+                                    <h4>{propriedadeFicha.atributos.carisma}</h4>
+                                </PontucaoAtributo>
+                                <LevelBox>
+                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
+                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                </LevelBox>
+                            </AreaLevel>
+                            <h3>+</h3>
+                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <PontuacaoAdicional>
+                                <h4>00</h4>
+                            </PontuacaoAdicional>
+                        </AtributoUnico>
+                    </Atributos>
+                </AreaAtributos>
+            }
 
             <AreaSuspensa>
-                <MenuSuspenso>Ocultar</MenuSuspenso>
+                <MenuSuspenso onClick={()=>{setMostrar(!mostrar)}}>{mostrar? 'Ver mais!':'Ocultar!'}</MenuSuspenso>
             </AreaSuspensa>
 
             
