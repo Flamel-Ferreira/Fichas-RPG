@@ -6,20 +6,20 @@
       "imgSrc": "./src/assets/Protagonistas/Elizabeth Ellen.png",
       "saude": {
         "vida": {
-          "vidaAtual": 18,
+          "vidaAtual": 16,
           "vidaMaxima": 32
         },
         "energia": {
-          "energiaAtual": 19,
+          "energiaAtual": 13,
           "energiaMaxima": 25
         }
       },
       "efeitos": {
+        "adrenalina": false,
+        "atordoado": false,
         "envenenado": false,
         "amaldicoado": false,
-        "atordoado": false,
         "marcado": false,
-        "adrenalina": false,
         "machucado": false
       },
       "atributos": {
@@ -55,11 +55,11 @@
         }
       },
       "efeitos": {
+        "adrenalina": false,
+        "atordoado": false,
         "envenenado": false,
         "amaldicoado": false,
-        "atordoado": false,
         "marcado": false,
-        "adrenalina": false,
         "machucado": false
       },
       "atributos": {
@@ -175,11 +175,11 @@
         }
       },
       "efeitos": {
+        "adrenalina": false,
+        "atordoado": false,
         "envenenado": false,
         "amaldicoado": false,
-        "atordoado": false,
         "marcado": false,
-        "adrenalina": false,
         "machucado": false
       },
       "atributos": {

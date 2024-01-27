@@ -1,4 +1,4 @@
-import {Ficha,AreaTitulo,Titulo,AreaImagemPersonagem,ImagemPersonagem,AreaStatus,AreaEfeitos,AreaStatusPoint,Barra,ContadorVida,BotaoDano,ContadorEnergia,BotaoEnergia,RangeVida, RangeEnergia,TituloHP,TituloMP,AreaSuspensa, MenuSuspenso} from "./style.ts"
+import {Ficha,AreaTitulo,Titulo,AreaImagemPersonagem,ImagemPersonagem,AreaStatus,AreaEfeitos, BotaoEfeitos,AreaStatusPoint,Barra,ContadorVida,BotaoDano,ContadorEnergia,BotaoEnergia,RangeVida, RangeEnergia,TituloHP,TituloMP,AreaSuspensa, MenuSuspenso} from "./style.ts"
 import Adrenalina from "../../assets/Icones/Efeitos/Adrenalina_Ativo.svg"
 import Atordoado from "../../assets/Icones/Efeitos/Atordoado_Ativo.svg"
 import Envenenado from "../../assets/Icones/Efeitos/Veneno_Ativo.svg"
@@ -10,6 +10,7 @@ import Dano from "../../assets/Icones/Botao_Dano.svg"
 import DanoEnergia from "../../assets/Icones/Botao_Dano_Energia.svg"
 import { iFichaDetetive } from "../../pages/detetives/types.ts"
 import axios from "axios"
+
 interface iFicha{
     propriedadeFicha: iFichaDetetive
 }
@@ -19,7 +20,6 @@ export const FichaDetetive: React.FC<iFicha>= ({
 }) => {
 
     const AtualizarSaude = async (id:number,qtdDanoVida:number,qtdDanoEnergia:number) => {
-        console.log(id)
         try{
             const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
                 "saude": {
@@ -40,6 +40,33 @@ export const FichaDetetive: React.FC<iFicha>= ({
         
     }
 
+    const AtualizarEfeitos = async (
+            id:number,
+            adrenalina:boolean,
+            atordoado:boolean,
+            envenenado:boolean,
+            amaldicoado: boolean,
+            marcado:boolean,
+            machucado:boolean
+        )=>{
+        try{
+            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+                "efeitos": {
+                    "adrenalina" : adrenalina ? !propriedadeFicha.efeitos.adrenalina: propriedadeFicha.efeitos.adrenalina,
+                    "atordoado"  : atordoado ? !propriedadeFicha.efeitos.atordoado: propriedadeFicha.efeitos.atordoado,
+                    "envenenado" : envenenado ? !propriedadeFicha.efeitos.envenenado: propriedadeFicha.efeitos.envenenado,
+                    "amaldicoado": amaldicoado ? !propriedadeFicha.efeitos.amaldicoado: propriedadeFicha.efeitos.amaldicoado,
+                    "marcado"    : marcado ? !propriedadeFicha.efeitos.marcado: propriedadeFicha.efeitos.marcado,
+                    "machucado"  : machucado ? !propriedadeFicha.efeitos.machucado: propriedadeFicha.efeitos.machucado
+                }
+            })
+
+            console.log(response.data)
+        }catch{
+            console.error(Error)
+        }
+    }
+
     return (
         <Ficha>
             <AreaTitulo>
@@ -53,12 +80,36 @@ export const FichaDetetive: React.FC<iFicha>= ({
             
             <AreaStatus>
                 <AreaEfeitos>
-                    <button><img src = {Adrenalina} alt = "Adrenalina" /></button>
-                    <button><img src = {Atordoado} alt  = "Atordoado" /></button>
-                    <button><img src = {Envenenado} alt = "Envenenado" /></button>
-                    <button><img src = {Maldicao} alt   = "Amaldiçoado" /></button>
-                    <button><img src = {Marcado} alt    = "Alvejado" /></button>
-                    <button><img src = {Machucado} alt  = "Machudado" /></button>
+                    <BotaoEfeitos 
+                        onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,true,false,false,false,false,false)}} 
+                        active = {propriedadeFicha.efeitos.adrenalina}>
+                        <img src  = {Adrenalina} alt = "Adrenalina" />
+                    </BotaoEfeitos>
+                    <BotaoEfeitos 
+                        onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,true,false,false,false,false)}} 
+                        active = {propriedadeFicha.efeitos.atordoado}>
+                        <img src   = {Atordoado} alt  = "Atordoado" />
+                    </BotaoEfeitos>
+                    <BotaoEfeitos 
+                        onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,false,true,false,false,false)}} 
+                        active = {propriedadeFicha.efeitos.envenenado}>
+                        <img src  = {Envenenado} alt = "Envenenado" />
+                    </BotaoEfeitos>
+                    <BotaoEfeitos 
+                        onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,false,false,true,false,false)}} 
+                        active = {propriedadeFicha.efeitos.amaldicoado}>
+                        <img src = {Maldicao} alt   = "Amaldiçoado" />
+                    </BotaoEfeitos>
+                    <BotaoEfeitos 
+                        onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,false,false,false,true,false)}} 
+                        active = {propriedadeFicha.efeitos.marcado}>
+                        <img src     = {Marcado} alt    = "Alvejado" />
+                    </BotaoEfeitos>
+                    <BotaoEfeitos 
+                        onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,false,false,false,false,true)}} 
+                        active = {propriedadeFicha.efeitos.machucado}>
+                        <img src   = {Machucado} alt  = "Machudado" />
+                    </BotaoEfeitos>
                 </AreaEfeitos>
         
                 <AreaStatusPoint>
@@ -83,6 +134,8 @@ export const FichaDetetive: React.FC<iFicha>= ({
                     </BotaoEnergia>
                 </AreaStatusPoint>
             </AreaStatus>
+
+
 
             <AreaSuspensa>
                 <MenuSuspenso>Ocultar</MenuSuspenso>

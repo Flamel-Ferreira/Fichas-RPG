@@ -36,19 +36,31 @@ export const AreaEfeitos = styled.div`
     flex-direction: row;
     gap: 8px;
     padding: 0 8px;
-
-    & button{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width:24px;
-        height:24px;
-        border-radius: 5px;
-        cursor:pointer;
-        background-color: #79ACBA;
-        border: none;
-    }
 `
+
+interface iBotaoEfeitos{
+    active: boolean;
+}
+export const BotaoEfeitos = styled.button<iBotaoEfeitos>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:24px;
+    height:24px;
+    border-radius: 5px;
+    cursor:pointer;
+    background-color: #79ACBA;
+    border: none;
+    opacity: ${({active})=>{
+        switch(active){
+            case true:
+                return '100%';
+            case false:
+                return '50%';
+        }
+    }};
+`
+
 export const AreaStatusPoint = styled.div`
     display: flex;
     flex-direction: row;
