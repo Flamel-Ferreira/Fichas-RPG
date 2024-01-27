@@ -248,7 +248,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
             }
 
             <AreaSuspensa>
-                <MenuSuspenso onClick={()=>{setMostrar(!mostrar)}}>{mostrar? 'Ver mais!':'Ocultar!'}</MenuSuspenso>
+                <MenuSuspenso onClick={()=>{setMostrar(!mostrar)}}>{mostrar? 'Ocultar!' : 'Ver mais!'}</MenuSuspenso>
             </AreaSuspensa>
 
             
