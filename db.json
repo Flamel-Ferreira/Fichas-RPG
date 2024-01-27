@@ -95,11 +95,11 @@
         }
       },
       "efeitos": {
+        "adrenalina": false,
+        "atordoado": false,
         "envenenado": false,
         "amaldicoado": false,
-        "atordoado": false,
         "marcado": false,
-        "adrenalina": false,
         "machucado": false
       },
       "atributos": {
@@ -135,11 +135,11 @@
         }
       },
       "efeitos": {
+        "adrenalina": false,
+        "atordoado": false,
         "envenenado": false,
         "amaldicoado": false,
-        "atordoado": false,
         "marcado": false,
-        "adrenalina": false,
         "machucado": false
       },
       "atributos": {
