@@ -140,7 +140,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
                 </AreaStatusPoint>
             </AreaStatus>
             
-            {mostrar || 
+            {mostrar && 
                 <AreaAtributos>
                     <Atributos>
                         <h3>Atributos:</h3>
