@@ -22,7 +22,12 @@ export const FichaDetetive: React.FC<iFicha>= ({
     propriedadeFicha
 }) => {
 
-    const [mostrar,setMostrar] = useState(false)
+    const [mostrar,setMostrar]                              = useState(false)
+    const [AleatorioForca, setAleatorioForca]               = useState(0)
+    const [AleatorioDestreza, setAleatorioDestreza]         = useState(0)
+    const [AleatorioInteligencia, setAleatorioInteligencia] = useState(0)
+    const [AleatorioConstituicao, setAleatorioConstituicao] = useState(0)
+    const [AleatorioCarisma, setAleatorioCarisma]           = useState(0)
 
     const AtualizarSaude = async (id:number,qtdDanoVida:number,qtdDanoEnergia:number) => {
         try{
@@ -96,6 +101,54 @@ export const FichaDetetive: React.FC<iFicha>= ({
             console.error(Error)
         }
 
+    }
+
+    const RolarDado = (atributo:'forca'|'destreza'|'inteligencia'|'constituicao'|'carisma') =>{
+        switch(atributo){
+            case 'forca':
+                if(AleatorioForca === 0){
+                    setAleatorioForca(Math.floor(Math.random() * 20) + 1)
+                }else{
+                    setAleatorioForca(0)
+                }
+                break
+
+            case 'destreza':
+                if(AleatorioDestreza === 0){
+                    setAleatorioDestreza(Math.floor(Math.random() * 20) + 1)
+                }else{
+                    setAleatorioDestreza(0)
+                }
+                break
+
+            case 'inteligencia':
+                if(AleatorioInteligencia === 0){
+                    setAleatorioInteligencia(Math.floor(Math.random() * 20) + 1)
+                }else{
+                    setAleatorioInteligencia(0)
+                }
+                break
+
+            case 'constituicao':
+                if(AleatorioConstituicao === 0){
+                    setAleatorioConstituicao(Math.floor(Math.random() * 20) + 1)
+                }else{
+                    setAleatorioConstituicao(0)
+                }
+                break
+
+            case 'carisma':    
+                if(AleatorioCarisma === 0){
+                    setAleatorioCarisma(Math.floor(Math.random() * 20) + 1)
+                }else{
+                    setAleatorioCarisma(0)
+                }
+                break
+        }
+
+        
+        
+        
     }
 
     return (
@@ -184,9 +237,9 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
-                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <BotaoDado onClick={()=>{RolarDado("forca")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
                             <PontuacaoAdicional>
-                                <h4>00</h4>
+                                <h4>{AleatorioForca}</h4>
                             </PontuacaoAdicional>
                         </AtributoUnico>
 
@@ -204,9 +257,9 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
-                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <BotaoDado onClick={()=>{RolarDado("destreza")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
                             <PontuacaoAdicional>
-                                <h4>00</h4>
+                                <h4>{AleatorioDestreza}</h4>
                             </PontuacaoAdicional>
                         </AtributoUnico>
 
@@ -224,9 +277,9 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
-                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <BotaoDado onClick={()=>{RolarDado("inteligencia")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
                             <PontuacaoAdicional>
-                                <h4>00</h4>
+                                <h4>{AleatorioInteligencia}</h4>
                             </PontuacaoAdicional>
                         </AtributoUnico>
 
@@ -244,9 +297,9 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
-                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <BotaoDado onClick={()=>{RolarDado("constituicao")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
                             <PontuacaoAdicional>
-                                <h4>00</h4>
+                                <h4>{AleatorioConstituicao}</h4>
                             </PontuacaoAdicional>
                         </AtributoUnico>
 
@@ -264,9 +317,9 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
-                            <BotaoDado><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                            <BotaoDado onClick={()=>{RolarDado("carisma")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
                             <PontuacaoAdicional>
-                                <h4>00</h4>
+                                <h4>{AleatorioCarisma}</h4>
                             </PontuacaoAdicional>
                         </AtributoUnico>
                     </Atributos>
