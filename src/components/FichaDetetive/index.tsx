@@ -35,11 +35,11 @@ export const FichaDetetive: React.FC<iFicha>= ({
                 "saude": {
                     "vida": {
                         "vidaAtual": propriedadeFicha.saude.vida.vidaAtual - qtdDanoVida,
-                        "vidaMaxima": 32
+                        "vidaMaxima": propriedadeFicha.saude.vida.vidaMaxima
                     },
                     "energia": {
                         "energiaAtual": propriedadeFicha.saude.energia.energiaAtual - qtdDanoEnergia,
-                        "energiaMaxima": 25
+                        "energiaMaxima": propriedadeFicha.saude.energia.energiaMaxima
                     }
                 }
             })
