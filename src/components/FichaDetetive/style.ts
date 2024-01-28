@@ -181,3 +181,110 @@ export const MenuSuspenso = styled.button`
     cursor: pointer;
     font-weight: 400;
 `
+
+
+
+//ATRIBUTOS:
+export const AreaAtributos = styled.div`
+    padding: 1.5rem 1rem;
+    background-color: #79ACBA;
+    
+`
+export const Atributos = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & h3{
+        color: black;
+    }
+`
+export const AtributoUnico = styled.div`
+    display:flex;
+    gap: 1rem;
+    align-items: center;
+    
+
+`
+
+export const AtributoTexto = styled.div`
+    width: 40%;
+
+    & h4{
+        color: black;
+    }
+`
+export const AreaLevel = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.225rem;
+`
+export const PontucaoAtributo = styled.div`
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+
+    & h4{
+        color: black;
+    }
+`
+export const LevelBox = styled.div`
+    height: 24px;
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    position: relative;
+`
+export const LevelUp = styled.button`
+    cursor: pointer;
+    border:none;
+    position: absolute;
+    height:12px;
+    border-radius: 2px 2px 0 0;
+    transform: translateY(-6px);
+`
+export const LevelDown = styled.button`
+    height:12px;
+    cursor: pointer;
+    border:none;
+    position: relative;
+    border-radius: 0 0 2px 2px;
+    transform: translateY(6px);
+
+`
+export const BotaoDado = styled.button`
+    cursor:pointer;
+    background-color: transparent;
+    border: none;
+    height: 24px;
+
+    &:hover{
+        background-color: pink;
+        border-radius: 5px;
+    }
+
+    &:active{
+        background-color: red;
+        border-radius: 5px;
+    }
+`
+
+export const PontuacaoAdicional = styled.div`
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+
+    & h4{
+        color: black;
+    }
+`

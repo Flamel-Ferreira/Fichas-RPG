@@ -23,11 +23,11 @@
         "machucado": false
       },
       "atributos": {
-        "forca": 11,
-        "destreza": 11,
+        "forca": 12,
+        "destreza": 8,
         "inteligencia": 11,
-        "constituicao": 11,
-        "carisma": 11
+        "constituicao": 12,
+        "carisma": 9
       },
       "mochila": [
         {
@@ -63,7 +63,7 @@
         "machucado": false
       },
       "atributos": {
-        "forca": 11,
+        "forca": 10,
         "destreza": 11,
         "inteligencia": 11,
         "constituicao": 11,
