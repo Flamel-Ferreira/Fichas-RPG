@@ -72,6 +72,32 @@ export const FichaDetetive: React.FC<iFicha>= ({
         }
     }
 
+    const AtualizarAtributos = async (
+        id:number,
+        qtdForca: number,
+        qtdDestreza: number,
+        qtdInteligencia: number,
+        qtdConstituicao: number,
+        qtdCarisma: number
+    )=>{
+        try{
+            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+                "atributos": {
+                    "forca": propriedadeFicha.atributos.forca + qtdForca,
+                    "destreza": propriedadeFicha.atributos.destreza + qtdDestreza,
+                    "inteligencia": propriedadeFicha.atributos.inteligencia + qtdInteligencia,
+                    "constituicao": propriedadeFicha.atributos.constituicao + qtdConstituicao,
+                    "carisma": propriedadeFicha.atributos.carisma + qtdCarisma
+                }
+            })
+
+            console.log(response)
+        }catch{
+            console.error(Error)
+        }
+
+    }
+
     return (
         <Ficha>
             <AreaTitulo>
@@ -153,8 +179,8 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                     <h4>{propriedadeFicha.atributos.forca}</h4>
                                 </PontucaoAtributo>
                                 <LevelBox>
-                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
-                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,1,0,0,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,-1,0,0,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
@@ -173,8 +199,8 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                     <h4>{propriedadeFicha.atributos.destreza}</h4>
                                 </PontucaoAtributo>
                                 <LevelBox>
-                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
-                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,1,0,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,-1,0,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
@@ -193,8 +219,8 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                     <h4>{propriedadeFicha.atributos.inteligencia}</h4>
                                 </PontucaoAtributo>
                                 <LevelBox>
-                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
-                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,1,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,-1,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
@@ -213,8 +239,8 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                     <h4>{propriedadeFicha.atributos.constituicao}</h4>
                                 </PontucaoAtributo>
                                 <LevelBox>
-                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
-                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,1,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,-1,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
@@ -233,8 +259,8 @@ export const FichaDetetive: React.FC<iFicha>= ({
                                     <h4>{propriedadeFicha.atributos.carisma}</h4>
                                 </PontucaoAtributo>
                                 <LevelBox>
-                                    <LevelUp><img src={LevelUpIcon} alt="Level Up" /></LevelUp>
-                                    <LevelDown><img src={LevelDownIcon} alt="Level Down" /></LevelDown>
+                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,0,1)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,0,-1)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
                                 </LevelBox>
                             </AreaLevel>
                             <h3>+</h3>
