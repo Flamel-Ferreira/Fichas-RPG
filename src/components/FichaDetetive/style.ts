@@ -182,10 +182,14 @@ export const MenuSuspenso = styled.button`
     font-weight: 400;
 `
 
+//ATRIBUTOS E MOCHILA:
+export const AreaAtributoMochila = styled.div`
 
+`
 
 //ATRIBUTOS:
 export const AreaAtributos = styled.div`
+
     padding: 1.5rem 1rem;
     background-color: #79ACBA;
     
@@ -203,10 +207,7 @@ export const AtributoUnico = styled.div`
     display:flex;
     gap: 1rem;
     align-items: center;
-    
-
 `
-
 export const AtributoTexto = styled.div`
     width: 40%;
 
@@ -273,7 +274,6 @@ export const BotaoDado = styled.button`
         border-radius: 5px;
     }
 `
-
 export const PontuacaoAdicional = styled.div`
     width: 24px;
     height: 24px;
@@ -287,4 +287,91 @@ export const PontuacaoAdicional = styled.div`
     & h4{
         color: black;
     }
+`
+
+//Mochila
+
+export const AreaMochila = styled.div`
+    padding: 1.5rem 1rem;
+    background-color: #9CCACD;
+
+    & h3{
+        color:black;
+    }
+`
+export const ItensMochila = styled.div`
+    padding: 1rem; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+`
+export const ItemMochila = styled.h4`
+    background-color: #79ACBA;
+    padding: 0.25rem 1rem;
+    border-radius: 1.25rem;
+    color: black;
+`
+export const AreaInput = styled.form`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem ;
+    width:100%;
+`
+export const InputMais = styled.input`
+    width: 2rem;
+    height: 2rem;
+    border:none;
+    border-radius:50%;
+    color: #79ACBA;
+    background-color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor:pointer;
+
+    &:hover{
+        background-color: #79ACBA;
+        color: white;
+    }
+
+    &:active{
+        background-color: #9CCACD;
+        color: white;
+    }
+`
+export const InputNomeItem = styled.input`
+    width:calc(100% - 3rem);
+    height: 2rem;
+    padding: 0 1rem;
+    border:none;
+    border-radius:1.5rem;
+    color: black;
+    
+    &::placeholder{
+        color: #79ACBA
+    }
+
+    &:focus-visible{
+        outline: none;
+    }
+    
+    
+`
+export const InputDescricaoItem = styled.input`
+    width:100%;
+    height: 2rem;
+    padding: 0 1rem;
+    border:none;
+    border-radius:1.5rem;
+    color: black;
+    
+    &::placeholder{
+        color: #79ACBA
+    }
+
+    &:focus-visible{
+        outline: none;
+    }
+    
+    
 `

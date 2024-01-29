@@ -10,7 +10,7 @@
           "vidaMaxima": 32
         },
         "energia": {
-          "energiaAtual": 13,
+          "energiaAtual": 12,
           "energiaMaxima": 25
         }
       },
@@ -130,7 +130,7 @@
           "vidaMaxima": 32
         },
         "energia": {
-          "energiaAtual": 12,
+          "energiaAtual": 10,
           "energiaMaxima": 25
         }
       },
