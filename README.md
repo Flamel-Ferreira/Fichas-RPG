@@ -8,3 +8,11 @@ Esse projeto usa:
 - Json Serve;
 - Axios;
 - React Router Dom;
+
+## Para iniciar:
+
+- Iniciar JSON SERVER:
+`npx json-server --watch db.json`
+
+- Iniciar Aplicação:
+`npm run dev`
