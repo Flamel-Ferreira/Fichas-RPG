@@ -31,6 +31,7 @@ export interface iFichaDetetive{
     },
     mochila:[
         {
+            id: string,
             nome: string,
             descricao: string
         }

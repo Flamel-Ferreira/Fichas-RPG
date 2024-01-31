@@ -14,6 +14,8 @@ import DanoEnergia from "../../assets/Icones/Botao_Dano_Energia.svg"
 import { iFichaDetetive } from "../../pages/detetives/types.ts"
 import axios from "axios"
 import { useState } from "react"
+import { Tooltip } from 'react-tooltip'
+
 interface iFicha{
     propriedadeFicha: iFichaDetetive
 }
@@ -329,17 +331,22 @@ export const FichaDetetive: React.FC<iFicha>= ({
                     <AreaMochila>
                         <h3>Mochila:</h3>
                         <ItensMochila>
-                            <ItemMochila>Lupa</ItemMochila>
-                            <ItemMochila>Mochila</ItemMochila>
-                            <ItemMochila>Uva</ItemMochila>
-                            <ItemMochila>Mochila</ItemMochila>
-                            <ItemMochila>Lupa</ItemMochila>
-                            <ItemMochila>Sacola</ItemMochila>
+                            {propriedadeFicha.mochila && propriedadeFicha.mochila.map((item)=>{
+                                return(
+                                    <>
+                                        <ItemMochila data-tooltip-id={item.id} data-tooltip-html={item.descricao}>{item.nome}</ItemMochila>
+                                        <Tooltip id={item.id}/>    
+                                    </>
+                                )
+                            })}
+
+                        
                         </ItensMochila>
                         <AreaInput>
+                            {/* Fazer um função para enviar os itens para o Back no onSubmit do formulário*/}
                             <InputMais type="submit" value="+" />
-                            <InputNomeItem type="text" placeholder='Nome do item'/>
-                            <InputDescricaoItem type="text" placeholder='Descrição do Item'/>
+                            <InputNomeItem type="text" name='input-nome' placeholder='Nome do item'/>
+                            <InputDescricaoItem type="text" name='input-descricao' placeholder='Descrição do Item'/>
                             
                         </AreaInput>
                     </AreaMochila>
