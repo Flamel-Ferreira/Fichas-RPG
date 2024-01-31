@@ -31,19 +31,19 @@
       },
       "mochila": [
         {
-          "id":"1",
+          "id": "1",
           "nome": "Lupa",
           "descricao": "Usado para ver algumas coisas com mais detalhes."
         },
         {
-          "id":"2",
+          "id": "2",
           "nome": "Caderno de Anotações",
           "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
         }
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Jéssica Jones",
       "imgSrc": "./src/assets/Protagonistas/Jéssica Jones.png",
       "saude": {
@@ -73,19 +73,19 @@
       },
       "mochila": [
         {
-          "id":"1",
+          "id": "1",
           "nome": "Lupa",
           "descricao": "Usado para ver algumas coisas com mais detalhes."
         },
         {
-          "id":"2",
+          "id": "2",
           "nome": "Caderno de Anotações",
           "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
         }
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Saymon Stallman",
       "imgSrc": "./src/assets/Protagonistas/Saymon Stallman.png",
       "saude": {
@@ -115,19 +115,19 @@
       },
       "mochila": [
         {
-          "id":"1",
+          "id": "1",
           "nome": "Lupa",
           "descricao": "Usado para ver algumas coisas com mais detalhes."
         },
         {
-          "id":"2",
+          "id": "2",
           "nome": "Caderno de Anotações",
           "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
         }
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "nome": "Mia Miller",
       "imgSrc": "./src/assets/Protagonistas/Mia Miller.png",
       "saude": {
@@ -157,19 +157,19 @@
       },
       "mochila": [
         {
-          "id":"1",
+          "id": "1",
           "nome": "Lupa",
           "descricao": "Usado para ver algumas coisas com mais detalhes."
         },
         {
-          "id":"2",
+          "id": "2",
           "nome": "Caderno de Anotações",
           "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
         }
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "nome": "Rodrigo Régis",
       "imgSrc": "./src/assets/Protagonistas/Rodrigo Régis.png",
       "saude": {
@@ -199,12 +199,12 @@
       },
       "mochila": [
         {
-          "id":"1",
+          "id": "1",
           "nome": "Lupa",
           "descricao": "Usado para ver algumas coisas com mais detalhes."
         },
         {
-          "id":"2",
+          "id": "2",
           "nome": "Caderno de Anotações",
           "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
         }
