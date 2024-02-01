@@ -20,16 +20,26 @@ interface iFicha{
     propriedadeFicha: iFichaDetetive
 }
 
+interface iItemMochila{
+    id: string; 
+    nome: string; 
+    descricao: string; 
+}
+
 export const FichaDetetive: React.FC<iFicha>= ({
     propriedadeFicha
 }) => {
 
-    const [mostrar,setMostrar]                              = useState(false)
+    const [mostrar,setMostrar] = useState(false)
+
     const [AleatorioForca, setAleatorioForca]               = useState(0)
     const [AleatorioDestreza, setAleatorioDestreza]         = useState(0)
     const [AleatorioInteligencia, setAleatorioInteligencia] = useState(0)
     const [AleatorioConstituicao, setAleatorioConstituicao] = useState(0)
     const [AleatorioCarisma, setAleatorioCarisma]           = useState(0)
+
+    const [nomeNovoItem,setNomeNovoItem]           = useState('')
+    const [descricaoNovoItem,setDescricaoNovoItem] = useState('')
 
     const AtualizarSaude = async (id:number,qtdDanoVida:number,qtdDanoEnergia:number) => {
         try{
@@ -153,6 +163,36 @@ export const FichaDetetive: React.FC<iFicha>= ({
         
     }
 
+    const AtualizarMochila = async (id:number,mochilaAtt:Array<iItemMochila>)=>{
+        try{
+            const response = await axios.patch( `http://localhost:3000/detetives/${id}` , {"mochila": mochilaAtt} ) 
+
+            console.log(response)
+        }catch(error){
+            console.error(error)
+        }
+    }
+
+    const Submit = (e:React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const MochilaAtual:Array<iItemMochila> = propriedadeFicha.mochila
+
+        const novoItem = {
+            "id": Date.now().toString(),
+            "nome": nomeNovoItem,
+            "descricao": descricaoNovoItem
+        }
+
+        MochilaAtual.push(novoItem)
+
+        console.log(MochilaAtual)
+
+        AtualizarMochila(propriedadeFicha.id, MochilaAtual)
+        
+        setNomeNovoItem('')
+        setDescricaoNovoItem('')
+    }
     return (
         <Ficha>
             <AreaTitulo>
@@ -342,11 +382,11 @@ export const FichaDetetive: React.FC<iFicha>= ({
 
                         
                         </ItensMochila>
-                        <AreaInput>
+                        <AreaInput onSubmit={(e)=>{Submit(e)}}>
                             {/* Fazer um função para enviar os itens para o Back no onSubmit do formulário*/}
-                            <InputMais type="submit" value="+" />
-                            <InputNomeItem type="text" name='input-nome' placeholder='Nome do item'/>
-                            <InputDescricaoItem type="text" name='input-descricao' placeholder='Descrição do Item'/>
+                            <InputMais          type = "submit" value = "+" />
+                            <InputNomeItem      type = "text" name = 'input-nome'      placeholder = 'Nome do item'      value = {nomeNovoItem} onChange = {(e)=>{setNomeNovoItem(e.target.value)}}/>
+                            <InputDescricaoItem type = "text" name = 'input-descricao' placeholder = 'Descrição do Item' value = {descricaoNovoItem} onChange = {(e)=>{setDescricaoNovoItem(e.target.value)}}/>
                             
                         </AreaInput>
                     </AreaMochila>
