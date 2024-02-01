@@ -1,7 +1,7 @@
 {
   "detetives": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Elizabeth Ellen",
       "imgSrc": "./src/assets/Protagonistas/Elizabeth Ellen.png",
       "saude": {
