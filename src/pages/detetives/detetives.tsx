@@ -7,6 +7,7 @@ import { api } from "../../services"
 export const DetevitesPage = () => {
 
     const [list,setList] = useState([])
+    
 
     const handleListChar = async () =>{
         const dados = await api.get('/detetives')
@@ -30,10 +31,9 @@ export const DetevitesPage = () => {
 
     return(
         <DetetivesContainer>
-
             {list && list.map((detetive)=>{
                 return(
-                    <FichaDetetive propriedadeFicha={detetive}/>
+                    <FichaDetetive propriedadeFicha={detetive} page={'detetives'}/>
                 )
             })}
         </DetetivesContainer>

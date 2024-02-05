@@ -1,4 +1,4 @@
-import {Ficha,AreaTitulo,Titulo,AreaImagemPersonagem,ImagemPersonagem,AreaStatus,AreaEfeitos, BotaoEfeitos,AreaStatusPoint,Barra,ContadorVida,BotaoDano,ContadorEnergia,BotaoEnergia,RangeVida, RangeEnergia,TituloHP,TituloMP,AreaSuspensa,AreaAtributos,Atributos,AtributoUnico,AtributoTexto,AreaLevel,PontucaoAtributo,LevelBox,LevelUp,LevelDown,BotaoDado,PontuacaoAdicional,MenuSuspenso} from "./style.ts"
+import {Ficha,AreaTitulo,Titulo,AreaImagemPersonagem,ImagemPersonagem,AreaStatus,AreaEfeitos, BotaoEfeitos,AreaStatusPoint,Barra,ContadorVida,BotaoDano,ContadorEnergia,BotaoEnergia,RangeVida, RangeEnergia,TituloHP,TituloMP,AreaSuspensa,AreaAtributos,Atributos,AtributoUnico,AtributoTexto,AreaLevel,PontucaoAtributo,LevelBox,LevelUp,LevelDown,BotaoDado,PontuacaoAdicional,AreaMochila,ItensMochila,ItemMochila,AreaInput,InputMais,InputNomeItem,InputDescricaoItem,AreaAtributoMochila, MenuSuspenso} from "./style.ts"
 import Adrenalina from "../../assets/Icones/Efeitos/Adrenalina_Ativo.svg"
 import Atordoado from "../../assets/Icones/Efeitos/Atordoado_Ativo.svg"
 import Envenenado from "../../assets/Icones/Efeitos/Veneno_Ativo.svg"
@@ -14,24 +14,38 @@ import DanoEnergia from "../../assets/Icones/Botao_Dano_Energia.svg"
 import { iFichaDetetive } from "../../pages/detetives/types.ts"
 import axios from "axios"
 import { useState } from "react"
+import { Tooltip } from 'react-tooltip'
+
 interface iFicha{
     propriedadeFicha: iFichaDetetive
+    page: string
+}
+
+interface iItemMochila{
+    id: string; 
+    nome: string; 
+    descricao: string; 
 }
 
 export const FichaDetetive: React.FC<iFicha>= ({
-    propriedadeFicha
+    propriedadeFicha,
+    page
 }) => {
 
-    const [mostrar,setMostrar]                              = useState(false)
+    const [mostrar,setMostrar] = useState(false)
+
     const [AleatorioForca, setAleatorioForca]               = useState(0)
     const [AleatorioDestreza, setAleatorioDestreza]         = useState(0)
     const [AleatorioInteligencia, setAleatorioInteligencia] = useState(0)
     const [AleatorioConstituicao, setAleatorioConstituicao] = useState(0)
     const [AleatorioCarisma, setAleatorioCarisma]           = useState(0)
 
+    const [nomeNovoItem,setNomeNovoItem]           = useState('')
+    const [descricaoNovoItem,setDescricaoNovoItem] = useState('')
+
     const AtualizarSaude = async (id:number,qtdDanoVida:number,qtdDanoEnergia:number) => {
         try{
-            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+            const response = await axios.patch(`http://localhost:3000/${page}/${id}`,{
                 "saude": {
                     "vida": {
                         "vidaAtual": propriedadeFicha.saude.vida.vidaAtual - qtdDanoVida,
@@ -60,7 +74,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
             machucado:boolean
         )=>{
         try{
-            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+            const response = await axios.patch(`http://localhost:3000/${page}/${id}`,{
                 "efeitos": {
                     "adrenalina" : adrenalina ? !propriedadeFicha.efeitos.adrenalina: propriedadeFicha.efeitos.adrenalina,
                     "atordoado"  : atordoado ? !propriedadeFicha.efeitos.atordoado: propriedadeFicha.efeitos.atordoado,
@@ -86,7 +100,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
         qtdCarisma: number
     )=>{
         try{
-            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+            const response = await axios.patch(`http://localhost:3000/${page}/${id}`,{
                 "atributos": {
                     "forca": propriedadeFicha.atributos.forca + qtdForca,
                     "destreza": propriedadeFicha.atributos.destreza + qtdDestreza,
@@ -151,6 +165,36 @@ export const FichaDetetive: React.FC<iFicha>= ({
         
     }
 
+    const AtualizarMochila = async (id:number,mochilaAtt:Array<iItemMochila>)=>{
+        try{
+            const response = await axios.patch( `http://localhost:3000/${page}/${id}` , {"mochila": mochilaAtt} ) 
+
+            console.log(response)
+        }catch(error){
+            console.error(error)
+        }
+    }
+
+    const Submit = (e:React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const MochilaAtual:Array<iItemMochila> = propriedadeFicha.mochila
+
+        const novoItem = {
+            "id": Date.now().toString(),
+            "nome": nomeNovoItem,
+            "descricao": descricaoNovoItem
+        }
+
+        MochilaAtual.push(novoItem)
+
+        console.log(MochilaAtual)
+
+        AtualizarMochila(propriedadeFicha.id, MochilaAtual)
+        
+        setNomeNovoItem('')
+        setDescricaoNovoItem('')
+    }
     return (
         <Ficha>
             <AreaTitulo>
@@ -220,110 +264,136 @@ export const FichaDetetive: React.FC<iFicha>= ({
             </AreaStatus>
             
             {mostrar && 
-                <AreaAtributos>
-                    <Atributos>
-                        <h3>Atributos:</h3>
-                        <AtributoUnico>
-                            <AtributoTexto>
-                                <h4>Força</h4>
-                            </AtributoTexto>
-                            <AreaLevel>
-                                <PontucaoAtributo>
-                                    <h4>{propriedadeFicha.atributos.forca}</h4>
-                                </PontucaoAtributo>
-                                <LevelBox>
-                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,1,0,0,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
-                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,-1,0,0,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
-                                </LevelBox>
-                            </AreaLevel>
-                            <h3>+</h3>
-                            <BotaoDado onClick={()=>{RolarDado("forca")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
-                            <PontuacaoAdicional>
-                                <h4>{AleatorioForca}</h4>
-                            </PontuacaoAdicional>
-                        </AtributoUnico>
+                <AreaAtributoMochila>
+                    <AreaAtributos>
+                        <Atributos>
+                            <h3>Atributos:</h3>
+                            <AtributoUnico>
+                                <AtributoTexto>
+                                    <h4>Força</h4>
+                                </AtributoTexto>
+                                <AreaLevel>
+                                    <PontucaoAtributo>
+                                        <h4>{propriedadeFicha.atributos.forca}</h4>
+                                    </PontucaoAtributo>
+                                    <LevelBox>
+                                        <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,1,0,0,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                        <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,-1,0,0,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
+                                    </LevelBox>
+                                </AreaLevel>
+                                <h3>+</h3>
+                                <BotaoDado onClick={()=>{RolarDado("forca")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                                <PontuacaoAdicional>
+                                    <h4>{AleatorioForca}</h4>
+                                </PontuacaoAdicional>
+                            </AtributoUnico>
 
-                        <AtributoUnico>
-                            <AtributoTexto>
-                                <h4>Destreza</h4>
-                            </AtributoTexto>
-                            <AreaLevel>
-                                <PontucaoAtributo>
-                                    <h4>{propriedadeFicha.atributos.destreza}</h4>
-                                </PontucaoAtributo>
-                                <LevelBox>
-                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,1,0,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
-                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,-1,0,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
-                                </LevelBox>
-                            </AreaLevel>
-                            <h3>+</h3>
-                            <BotaoDado onClick={()=>{RolarDado("destreza")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
-                            <PontuacaoAdicional>
-                                <h4>{AleatorioDestreza}</h4>
-                            </PontuacaoAdicional>
-                        </AtributoUnico>
+                            <AtributoUnico>
+                                <AtributoTexto>
+                                    <h4>Destreza</h4>
+                                </AtributoTexto>
+                                <AreaLevel>
+                                    <PontucaoAtributo>
+                                        <h4>{propriedadeFicha.atributos.destreza}</h4>
+                                    </PontucaoAtributo>
+                                    <LevelBox>
+                                        <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,1,0,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                        <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,-1,0,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
+                                    </LevelBox>
+                                </AreaLevel>
+                                <h3>+</h3>
+                                <BotaoDado onClick={()=>{RolarDado("destreza")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                                <PontuacaoAdicional>
+                                    <h4>{AleatorioDestreza}</h4>
+                                </PontuacaoAdicional>
+                            </AtributoUnico>
 
-                        <AtributoUnico>
-                            <AtributoTexto>
-                                <h4>Inteligência</h4>
-                            </AtributoTexto>
-                            <AreaLevel>
-                                <PontucaoAtributo>
-                                    <h4>{propriedadeFicha.atributos.inteligencia}</h4>
-                                </PontucaoAtributo>
-                                <LevelBox>
-                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,1,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
-                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,-1,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
-                                </LevelBox>
-                            </AreaLevel>
-                            <h3>+</h3>
-                            <BotaoDado onClick={()=>{RolarDado("inteligencia")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
-                            <PontuacaoAdicional>
-                                <h4>{AleatorioInteligencia}</h4>
-                            </PontuacaoAdicional>
-                        </AtributoUnico>
+                            <AtributoUnico>
+                                <AtributoTexto>
+                                    <h4>Inteligência</h4>
+                                </AtributoTexto>
+                                <AreaLevel>
+                                    <PontucaoAtributo>
+                                        <h4>{propriedadeFicha.atributos.inteligencia}</h4>
+                                    </PontucaoAtributo>
+                                    <LevelBox>
+                                        <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,1,0,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                        <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,-1,0,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
+                                    </LevelBox>
+                                </AreaLevel>
+                                <h3>+</h3>
+                                <BotaoDado onClick={()=>{RolarDado("inteligencia")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                                <PontuacaoAdicional>
+                                    <h4>{AleatorioInteligencia}</h4>
+                                </PontuacaoAdicional>
+                            </AtributoUnico>
 
-                        <AtributoUnico>
-                            <AtributoTexto>
-                                <h4>Constituição</h4>
-                            </AtributoTexto>
-                            <AreaLevel>
-                                <PontucaoAtributo>
-                                    <h4>{propriedadeFicha.atributos.constituicao}</h4>
-                                </PontucaoAtributo>
-                                <LevelBox>
-                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,1,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
-                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,-1,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
-                                </LevelBox>
-                            </AreaLevel>
-                            <h3>+</h3>
-                            <BotaoDado onClick={()=>{RolarDado("constituicao")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
-                            <PontuacaoAdicional>
-                                <h4>{AleatorioConstituicao}</h4>
-                            </PontuacaoAdicional>
-                        </AtributoUnico>
+                            <AtributoUnico>
+                                <AtributoTexto>
+                                    <h4>Constituição</h4>
+                                </AtributoTexto>
+                                <AreaLevel>
+                                    <PontucaoAtributo>
+                                        <h4>{propriedadeFicha.atributos.constituicao}</h4>
+                                    </PontucaoAtributo>
+                                    <LevelBox>
+                                        <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,1,0)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                        <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,-1,0)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
+                                    </LevelBox>
+                                </AreaLevel>
+                                <h3>+</h3>
+                                <BotaoDado onClick={()=>{RolarDado("constituicao")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                                <PontuacaoAdicional>
+                                    <h4>{AleatorioConstituicao}</h4>
+                                </PontuacaoAdicional>
+                            </AtributoUnico>
 
-                        <AtributoUnico>
-                            <AtributoTexto>
-                                <h4>Carisma</h4>
-                            </AtributoTexto>
-                            <AreaLevel>
-                                <PontucaoAtributo>
-                                    <h4>{propriedadeFicha.atributos.carisma}</h4>
-                                </PontucaoAtributo>
-                                <LevelBox>
-                                    <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,0,1)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
-                                    <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,0,-1)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
-                                </LevelBox>
-                            </AreaLevel>
-                            <h3>+</h3>
-                            <BotaoDado onClick={()=>{RolarDado("carisma")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
-                            <PontuacaoAdicional>
-                                <h4>{AleatorioCarisma}</h4>
-                            </PontuacaoAdicional>
-                        </AtributoUnico>
-                    </Atributos>
-                </AreaAtributos>
+                            <AtributoUnico>
+                                <AtributoTexto>
+                                    <h4>Carisma</h4>
+                                </AtributoTexto>
+                                <AreaLevel>
+                                    <PontucaoAtributo>
+                                        <h4>{propriedadeFicha.atributos.carisma}</h4>
+                                    </PontucaoAtributo>
+                                    <LevelBox>
+                                        <LevelUp   onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,0,1)}}><img src = {LevelUpIcon} alt   = "Level Up" /></LevelUp>
+                                        <LevelDown onClick = {()=>{AtualizarAtributos(propriedadeFicha.id,0,0,0,0,-1)}}><img src = {LevelDownIcon} alt = "Level Down" /></LevelDown>
+                                    </LevelBox>
+                                </AreaLevel>
+                                <h3>+</h3>
+                                <BotaoDado onClick={()=>{RolarDado("carisma")}}><img src={DadoD20} alt="Botão de Dado" /></BotaoDado>
+                                <PontuacaoAdicional>
+                                    <h4>{AleatorioCarisma}</h4>
+                                </PontuacaoAdicional>
+                            </AtributoUnico>
+                        </Atributos>
+                    </AreaAtributos>
+
+                    <AreaMochila>
+                        <h3>Mochila:</h3>
+                        <ItensMochila>
+                            {propriedadeFicha.mochila && propriedadeFicha.mochila.map((item)=>{
+                                return(
+                                    <>
+                                        <ItemMochila data-tooltip-id={item.id} data-tooltip-html={item.descricao}>{item.nome}</ItemMochila>
+                                        <Tooltip id={item.id}/>    
+                                    </>
+                                )
+                            })}
+
+                        
+                        </ItensMochila>
+                        <AreaInput onSubmit={(e)=>{Submit(e)}}>
+                            {/* Fazer um função para enviar os itens para o Back no onSubmit do formulário*/}
+                            <InputMais          type = "submit" value = "+" />
+                            <InputNomeItem      type = "text" name = 'input-nome'      placeholder = 'Nome do item'      value = {nomeNovoItem} onChange = {(e)=>{setNomeNovoItem(e.target.value)}}/>
+                            <InputDescricaoItem type = "text" name = 'input-descricao' placeholder = 'Descrição do Item' value = {descricaoNovoItem} onChange = {(e)=>{setDescricaoNovoItem(e.target.value)}}/>
+                            
+                        </AreaInput>
+                    </AreaMochila>
+
+                </AreaAtributoMochila>
             }
 
             <AreaSuspensa>
