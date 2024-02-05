@@ -6,5 +6,10 @@ export const ContainerMenu = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: gray;
+    background-color: #004E63;
+
+    & a{
+        font-weight:700;
+        font-size: 1.25rem;
+    }
 `
