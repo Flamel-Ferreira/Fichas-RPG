@@ -18,6 +18,7 @@ import { Tooltip } from 'react-tooltip'
 
 interface iFicha{
     propriedadeFicha: iFichaDetetive
+    page: string
 }
 
 interface iItemMochila{
@@ -27,7 +28,8 @@ interface iItemMochila{
 }
 
 export const FichaDetetive: React.FC<iFicha>= ({
-    propriedadeFicha
+    propriedadeFicha,
+    page
 }) => {
 
     const [mostrar,setMostrar] = useState(false)
@@ -43,7 +45,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
 
     const AtualizarSaude = async (id:number,qtdDanoVida:number,qtdDanoEnergia:number) => {
         try{
-            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+            const response = await axios.patch(`http://localhost:3000/${page}/${id}`,{
                 "saude": {
                     "vida": {
                         "vidaAtual": propriedadeFicha.saude.vida.vidaAtual - qtdDanoVida,
@@ -72,7 +74,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
             machucado:boolean
         )=>{
         try{
-            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+            const response = await axios.patch(`http://localhost:3000/${page}/${id}`,{
                 "efeitos": {
                     "adrenalina" : adrenalina ? !propriedadeFicha.efeitos.adrenalina: propriedadeFicha.efeitos.adrenalina,
                     "atordoado"  : atordoado ? !propriedadeFicha.efeitos.atordoado: propriedadeFicha.efeitos.atordoado,
@@ -98,7 +100,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
         qtdCarisma: number
     )=>{
         try{
-            const response = await axios.patch(`http://localhost:3000/detetives/${id}`,{
+            const response = await axios.patch(`http://localhost:3000/${page}/${id}`,{
                 "atributos": {
                     "forca": propriedadeFicha.atributos.forca + qtdForca,
                     "destreza": propriedadeFicha.atributos.destreza + qtdDestreza,
@@ -165,7 +167,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
 
     const AtualizarMochila = async (id:number,mochilaAtt:Array<iItemMochila>)=>{
         try{
-            const response = await axios.patch( `http://localhost:3000/detetives/${id}` , {"mochila": mochilaAtt} ) 
+            const response = await axios.patch( `http://localhost:3000/${page}/${id}` , {"mochila": mochilaAtt} ) 
 
             console.log(response)
         }catch(error){

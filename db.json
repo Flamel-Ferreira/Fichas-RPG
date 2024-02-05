@@ -6,7 +6,7 @@
       "imgSrc": "./src/assets/Protagonistas/Elizabeth Ellen.png",
       "saude": {
         "vida": {
-          "vidaAtual": 16,
+          "vidaAtual": 15,
           "vidaMaxima": 32
         },
         "energia": {
@@ -39,6 +39,11 @@
           "id": "2",
           "nome": "Caderno de Anotações",
           "descricao": "Usado para anotar detalhes e relacionar informações e acontecimentos."
+        },
+        {
+          "id": "1706836231278",
+          "nome": "Foldscope",
+          "descricao": "Um microscópio descartável de papel, que amplia até 140x. <br> É necessário de luz solar."
         }
       ]
     },
@@ -213,6 +218,76 @@
       "saude.vida.vidaAtual": 11
     }
   ],
-  "npcs": [],
-  "monstros": []
+  "npcs": [
+    {
+      "id": "1",
+      "nome": "Lissandra Lispector",
+      "imgSrc": "./src/assets/Protagonistas/Elizabeth Ellen.png",
+      "saude": {
+        "vida": {
+          "vidaAtual": 14,
+          "vidaMaxima": 32
+        },
+        "energia": {
+          "energiaAtual": 10,
+          "energiaMaxima": 25
+        }
+      },
+      "efeitos": {
+        "adrenalina": false,
+        "atordoado": false,
+        "envenenado": false,
+        "amaldicoado": false,
+        "marcado": false,
+        "machucado": false
+      },
+      "atributos": {
+        "forca": 8,
+        "destreza": 9,
+        "inteligencia": 11,
+        "constituicao": 8,
+        "carisma": 5
+      },
+      "mochila": [
+        {
+          "id": "1707167161470",
+          "nome": "Pulseira Anelar de Fios Pulsantes",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "monstros": [
+    {
+      "id": "1",
+      "nome": "Rubson Rauter",
+      "imgSrc": "./src/assets/Icones/Level_UP.svg",
+      "saude": {
+        "vida": {
+          "vidaAtual": 15,
+          "vidaMaxima": 32
+        },
+        "energia": {
+          "energiaAtual": 12,
+          "energiaMaxima": 25
+        }
+      },
+      "efeitos": {
+        "adrenalina": false,
+        "atordoado": false,
+        "envenenado": false,
+        "amaldicoado": false,
+        "marcado": false,
+        "machucado": false
+      },
+      "atributos": {
+        "forca": 7,
+        "destreza": 9,
+        "inteligencia": 11,
+        "constituicao": 8,
+        "carisma": 5
+      },
+      "mochila": []
+    }
+  ]
 }
