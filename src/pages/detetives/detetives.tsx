@@ -2,6 +2,7 @@ import { useEffect, useState} from "react"
 import { FichaDetetive } from "../../components/FichaDetetive"
 import { DetetivesContainer } from "./style"
 import { api } from "../../services"
+import { iFichaDetetive } from "./types"
 // import { iFichaDetetive } from "./types"
 
 export const DetevitesPage = () => {
@@ -31,9 +32,9 @@ export const DetevitesPage = () => {
 
     return(
         <DetetivesContainer>
-            {list && list.map((detetive)=>{
+            {list && list.map((detetive:iFichaDetetive)=>{
                 return(
-                    <FichaDetetive propriedadeFicha={detetive} page={'detetives'}/>
+                    <FichaDetetive propriedadeFicha={detetive} page={'detetives'} key={detetive.id}/>
                 )
             })}
         </DetetivesContainer>
