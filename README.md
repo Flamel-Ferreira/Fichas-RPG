@@ -2,7 +2,7 @@
 
 Esse é um projeto pessoal para gerenciar facilmente as fichas de um RPG que estou criando.
 
-## Técnicas
+## Bibliotecas:
 
 Esse projeto usa:
 - Json Serve;
