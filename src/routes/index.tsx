@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import { DetevitesPage } from "../pages/detetives/detetives"
-import { MenuPage } from "../pages/menu"
+import { MenuPage } from "../pages/menu/menu"
 import { NpcsPage } from "../pages/npcs"
 import { MonstrosPage } from "../pages/monstros"
 import { RouterContainer } from "./style"

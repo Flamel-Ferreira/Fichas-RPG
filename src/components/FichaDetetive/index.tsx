@@ -158,11 +158,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
                     setAleatorioCarisma(0)
                 }
                 break
-        }
-
-        
-        
-        
+        }  
     }
 
     const AtualizarMochila = async (id:number,mochilaAtt:Array<iItemMochila>)=>{
@@ -210,32 +206,32 @@ export const FichaDetetive: React.FC<iFicha>= ({
                 <AreaEfeitos>
                     <BotaoEfeitos 
                         onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,true,false,false,false,false,false)}} 
-                        active = {propriedadeFicha.efeitos.adrenalina}>
+                        ativo = {(propriedadeFicha.efeitos.adrenalina).toString()}>
                         <img src  = {Adrenalina} alt = "Adrenalina" />
                     </BotaoEfeitos>
                     <BotaoEfeitos 
                         onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,true,false,false,false,false)}} 
-                        active = {propriedadeFicha.efeitos.atordoado}>
+                        ativo = {(propriedadeFicha.efeitos.atordoado).toString()}>
                         <img src   = {Atordoado} alt  = "Atordoado" />
                     </BotaoEfeitos>
                     <BotaoEfeitos 
                         onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,false,true,false,false,false)}} 
-                        active = {propriedadeFicha.efeitos.envenenado}>
+                        ativo = {(propriedadeFicha.efeitos.envenenado).toString()}>
                         <img src  = {Envenenado} alt = "Envenenado" />
                     </BotaoEfeitos>
                     <BotaoEfeitos 
                         onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,false,false,true,false,false)}} 
-                        active = {propriedadeFicha.efeitos.amaldicoado}>
+                        ativo = {(propriedadeFicha.efeitos.amaldicoado).toString()}>
                         <img src = {Maldicao} alt   = "Amaldiçoado" />
                     </BotaoEfeitos>
                     <BotaoEfeitos 
                         onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,false,false,false,true,false)}} 
-                        active = {propriedadeFicha.efeitos.marcado}>
+                        ativo = {(propriedadeFicha.efeitos.marcado).toString()}>
                         <img src     = {Marcado} alt    = "Alvejado" />
                     </BotaoEfeitos>
                     <BotaoEfeitos 
                         onClick = {()=>{AtualizarEfeitos(propriedadeFicha.id,false,false,false,false,false,true)}} 
-                        active = {propriedadeFicha.efeitos.machucado}>
+                        ativo = {(propriedadeFicha.efeitos.machucado).toString()}>
                         <img src   = {Machucado} alt  = "Machudado" />
                     </BotaoEfeitos>
                 </AreaEfeitos>
@@ -244,7 +240,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
                     <TituloHP>HP</TituloHP>
                     <Barra>
                         <ContadorVida>{propriedadeFicha.saude.vida.vidaAtual}/{propriedadeFicha.saude.vida.vidaMaxima}</ContadorVida>
-                        <RangeVida type="range" value={propriedadeFicha.saude.vida.vidaAtual} min='0' max={31}/>
+                        <RangeVida onChange={()=>{console.log('Atualizou a vida!')}} type="range" value={propriedadeFicha.saude.vida.vidaAtual} min='0' max={31}/>
                     </Barra>
                     <BotaoDano onClick={ () => { AtualizarSaude(propriedadeFicha.id,1,0)}}>
                         <img src={Dano} alt="Dano" />
@@ -255,7 +251,7 @@ export const FichaDetetive: React.FC<iFicha>= ({
                     <TituloMP>MP</TituloMP>
                     <Barra>
                         <ContadorEnergia>{propriedadeFicha.saude.energia.energiaAtual}/{propriedadeFicha.saude.energia.energiaMaxima}</ContadorEnergia>
-                        <RangeEnergia value={propriedadeFicha.saude.energia.energiaAtual} type="range" min='0' max={23}/>
+                        <RangeEnergia onChange={()=>{console.log('Atualizou a energia!')}} type="range" value={propriedadeFicha.saude.energia.energiaAtual}  min='0' max={23}/>
                     </Barra>
                     <BotaoEnergia onClick={ () => { AtualizarSaude(propriedadeFicha.id,0,1)} }>
                         <img src={DanoEnergia} alt="Energia" />

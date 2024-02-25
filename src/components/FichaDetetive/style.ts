@@ -39,7 +39,7 @@ export const AreaEfeitos = styled.div`
 `
 
 interface iBotaoEfeitos{
-    active: boolean;
+    ativo: string;
 }
 export const BotaoEfeitos = styled.button<iBotaoEfeitos>`
     display: flex;
@@ -51,11 +51,11 @@ export const BotaoEfeitos = styled.button<iBotaoEfeitos>`
     cursor:pointer;
     background-color: #79ACBA;
     border: none;
-    opacity: ${({active})=>{
-        switch(active){
-            case true:
+    opacity: ${({ativo})=>{
+        switch(ativo){
+            case 'true':
                 return '100%';
-            case false:
+            case 'false':
                 return '50%';
         }
     }};
